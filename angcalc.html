@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Calculator</title>
+        <script data-require="angular.js@1.0.7" data-semver="1.0.7" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+        <script src= "angcalc.js"></script>
+        <link rel="stylesheet" href="./angcalc.css">
+    </head>
+    <body>
+        <h1>Welcome to  calculator using Angular JS</h1>
+        <div ng-app="CalculatorApp" ng-controller="CalculatorController">
+        <p style="font-weight: bold;"> Operand 1: <input type="number" ng-model="a"></p>
+        <p style="font-weight: bold;"> Operand 2: <input type="number" ng-model="b"></p>
+        <p style="font-weight: bold;"> Operator: <select ng-model="operator">
+                <option>+</option>
+                <option>*</option>
+                <option>-</option>
+                <option>/</option>
+                <option>%</option>
+            </select></p>
+        <p style="font-weight: bold;">The result is {{result()}}</p>
+        </div>
+    </body>
+</html>

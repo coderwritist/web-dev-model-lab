@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Angular JS Animations</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link rel="stylesheet" href="./anim.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+    </head>
+    <body ng-app="myApp">
+        <h1>Hide the DIV: <input type="checkbox" ng-model="myCheck"></h1>
+        <div ng-hide="myCheck">WELCOME TO OUR CODE EDITOR</div>
+        <h1>Show the DIV: <input type="checkbox" ng-model="myCheck2"></h1>
+        <div ng-show="myCheck2">CODE WHATEVER YOU WANT IN ANY MACHINE</div>
+        <p>
+            <button ng-click="myCssVar='css-class'">Set</button>
+            <button ng-click="myCssVar=''">Clear</button>
+            <br>
+            <span ng-class="myCssVar">ONLINE</span>
+        </p>
+        <script>
+            var app = angular.module('myApp', ['ngAnimate']);
+        </script>
+    </body>
+</html>

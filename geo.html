@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Example</title>
+    <link rel="stylesheet" href="./geo.css">
+</style>
+</head>
+<body>
+    <h1>Cnavas API example</h1>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Create a linear gradient from red to yellow
+        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, "blue");
+        gradient.addColorStop(1, "green");
+
+        // Fill a rectangle with the gradient
+        ctx.fillStyle = gradient;
+        ctx.fillRect(50, 50, 400, 400);
+    </script>
+
+    <h1>Click the button to get your coordinates.</h1>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <h2 id="demo"></h2>
+
+    <script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+    }
+
+    function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+    }
+    </script>
+
+    <h1>SVG Example</h1>
+<br>
+    <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="58" fill = "white" />
+ <rect x="10" y="10" width="80" height="80" fill = "black" />
+    </svg>
+</body>
+</html>

@@ -1,0 +1,11 @@
+body
+{
+    /* centre everything */
+    text-align: center;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+}

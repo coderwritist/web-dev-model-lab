@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="service.js"></script>
+    <link rel="stylesheet" href="./service.css">
+  </head>
+  <body ng-app="exampleApp">
+    <div ng-controller="exampleController">
+        <input type="text" ng-model="searchText" placeholder="Search...">
+      <ul>
+        <li ng-repeat="item in data |filter:searchText">{{item.name}}</li>
+      </ul>
+    </div>
+  </body>
+</html>

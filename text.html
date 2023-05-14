@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="textEditor">
+<head>
+    <title>AngularJS Text Editor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="./text.css">
+</head>
+<body ng-controller="textEditorCtrl">
+    <h1>AngularJS Text Editor</h1>
+    <textarea ng-model="text"></textarea>
+<br>
+    <button ng-click="clear()">Clear</button>
+    <button ng-click="save()">Save</button>
+    <button ng-click="cut()">Cut</button>
+    <button ng-click="copy()">Copy</button>
+    <button ng-click="paste()">Paste</button>
+    <button ng-click="open()">Open file</button>
+    <button ng-click="download()">Download</button>
+
+
+    <div ng-if="savedText.length > 0">
+        <h2>Saved Text:</h2>
+        <p>{{ savedText }}</p>
+    </div>
+    <script>
+        var app = angular.module("textEditor", []);
+        app.controller("textEditorCtrl", function($scope) {
+            $scope.text = "";
+            $scope.savedText = "";
+            $scope.clear = function() {
+                $scope.text = "";
+            };
+            $scope.save = function() {
+                $scope.savedText = $scope.text;
+            };
+$scope.cut = function() {
+    // Save the selected text to the clipboard
+    document.execCommand("cut");
+};
+
+$scope.copy = function() {
+    // Save the selected text to the clipboard
+    document.execCommand("copy");
+};
+
+$scope.paste = function() {
+    // Get the clipboard contents as plain text
+    navigator.clipboard.readText().then(function(text) {
+        // Store the pasted text in the textarea
+        $scope.text += text;
+    });
+};
+$scope.download = function() {
+     var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent($scope.savedText));
+                element.setAttribute('download', 'text.txt');
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+};
+$scope.open = function() {
+                var input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.txt';
+                input.onchange = function(event) {
+                    var file = event.target.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(event) {
+                        $scope.savedText = event.target.result;
+                        $scope.text = event.target.result;
+                        $scope.$apply();
+                    };
+                    reader.readAsText(file);
+                };
+                input.click();
+            };
+
+
+        });
+    </script>
+</body>
+</html>

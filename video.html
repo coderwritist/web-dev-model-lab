@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="videoPlayer">
+<head>
+    <title>AngularJS Video Player</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="./video.css">
+</head>
+<body ng-controller="videoPlayerCtrl">
+    <h1>AngularJS Video Player</h1>
+    <video ng-src="{{videoUrl}}" style = "border: 1px soid white; border-radius:10px"></video>
+    <br>
+    <button ng-click="play()">Play</button>
+    <button ng-click="pause()">Pause</button>
+    <button ng-click="stop()">Stop</button>
+    <button ng-click="X2()">2X</button>
+    <button ng-click="X05()">0.5X</button>
+    <button ng-click="X1()">1X</button>
+
+    <script>
+        var app = angular.module("videoPlayer", []);
+        app.controller("videoPlayerCtrl", function($scope) {
+            $scope.videoUrl = "https://sample-videos.com/video123/mp4/480/big_buck_bunny_480p_1mb.mp4";
+            var video = document.getElementsByTagName("video")[0];
+            $scope.play = function() {
+                video.play();
+            };
+            $scope.pause = function() {
+                video.pause();
+            };
+            $scope.stop = function() {
+                video.currentTime = 0;
+                video.pause();
+            };
+            $scope.X2 = function() {
+                video.playbackRate = 2;
+            };
+            $scope.X05 = function() {
+                video.playbackRate = 0.5;
+            };
+            $scope.X1 = function() {
+                video.playbackRate = 1;
+            };
+        });
+    </script>
+</body>
+</html>

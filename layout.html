@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>Switching Layouts in AngularJS</title>
+    <link rel="stylesheet" href="./layout.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    var app = angular.module('myApp', []);
+    
+    app.controller('LayoutController', function($scope) {
+      $scope.layout = 'grid';
+      
+      $scope.toggleLayout = function() {
+        this.layout = (this.layout === 'grid') ? 'list' : 'grid';
+      };
+    });
+  </script>
+</head>
+<body ng-controller="LayoutController as layout">
+  <button ng-click="toggleLayout()">Toggle Layout</button>
+  
+  <div class="{{layout}}">
+    <div class="item">C++</div>
+    <div class="item">Java</div>
+    <div class="item">Python</div>
+    <div class="item">C</div>
+    <div class="item">Rust</div>
+  </div>
+</body>
+</html>
